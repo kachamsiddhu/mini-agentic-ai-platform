@@ -32,8 +32,11 @@ class KnowledgeBase:
         self.documents = text_splitter.split_documents(docs)
         api_key = os.getenv("GOOGLE_API_KEY")
         if api_key and api_key != "your_gemini_api_key_here":
-            embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-            self.vectorstore = FAISS.from_documents(self.documents, embeddings)
+            try:
+                embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+                self.vectorstore = FAISS.from_documents(self.documents, embeddings)
+            except Exception:
+                self.vectorstore = None
         tokenized_corpus = [doc.page_content.lower().split(" ") for doc in self.documents]
         if tokenized_corpus:
             self.bm25 = BM25Okapi(tokenized_corpus)

@@ -7,7 +7,13 @@ from src.knowledge.rag import KnowledgeBase
 from src.tools.actions import get_logs, get_metrics
 from src.tools.schema import GetLogsInput, GetMetricsInput
 
-kb = KnowledgeBase()
+_kb = None
+
+def _get_kb() -> KnowledgeBase:
+    global _kb
+    if _kb is None:
+        _kb = KnowledgeBase()
+    return _kb
 
 def investigator_node(state: AgentState):
     start_time = time.time()
@@ -17,8 +23,8 @@ def investigator_node(state: AgentState):
     metrics_resp = get_metrics(GetMetricsInput(service=service))
     logs_data = logs_resp.data if logs_resp.status == "ok" else f"ERROR: {logs_resp.error}"
     metrics_data = metrics_resp.data if metrics_resp.status == "ok" else f"ERROR: {metrics_resp.error}"
-    rag_results = kb.search(f"high latency or timeout or OOM in {service}", top_k=2,
-                            filters={"service": service})
+    rag_results = _get_kb().search(f"high latency or timeout or OOM in {service}", top_k=2,
+                                   filters={"service": service})
     investigation_results = {
         "service": service,
         "logs": logs_data,
