@@ -13,3 +13,4 @@ httpx
 python-dotenv
 langchain-community
 unstructured
+markdown
