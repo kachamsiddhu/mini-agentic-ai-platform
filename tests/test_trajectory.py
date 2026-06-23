@@ -1,5 +1,6 @@
 import pytest
 import uuid
+from unittest.mock import patch
 from src.tracing import get_traces
 from src.schemas import WorkflowState
 from src.graph import build_graph
@@ -20,8 +21,11 @@ def test_full_trajectory_and_cost_logging():
         "action_results": [],
         "safety_decisions": []
     }
-    graph = build_graph()
-    final_state = graph.invoke(initial_state)
+    # Force agents to use their no-API-key fallback paths so the test
+    # runs without a live Google API key (e.g. in CI).
+    with patch.dict("os.environ", {"GOOGLE_API_KEY": ""}):
+        graph = build_graph()
+        final_state = graph.invoke(initial_state)
     assert final_state["workflow_state"] == WorkflowState.COMPLETE
     traces = get_traces(run_id)
     assert len(traces) >= 4
