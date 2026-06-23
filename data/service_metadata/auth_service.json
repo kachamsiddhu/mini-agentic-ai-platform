@@ -1,0 +1,7 @@
+{
+  "service_name": "auth-service",
+  "owner_team": "Team Security",
+  "repo_url": "https://github.com/org/auth-service",
+  "dependencies": ["redis-session-cache", "users-db"],
+  "environment": "production"
+}

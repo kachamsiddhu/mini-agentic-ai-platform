@@ -1,0 +1,20 @@
+
+allowed_actions:
+  - restart_service
+  - scale_service
+  - fetch_logs
+  - fetch_metrics
+  - fetch_dependencies
+  - clear_cache
+
+blocked_actions:
+  - delete_database
+  - terminate_cluster
+  - drop_table
+  - flush_all_data
+  - modify_security_group
+
+autonomy_tiers:
+  LOW: recommend_only
+  MEDIUM: simulate_actions
+  HIGH: allow_execution

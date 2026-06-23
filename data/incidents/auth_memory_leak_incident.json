@@ -1,0 +1,9 @@
+{
+  "incident_id": "INC-20260622-002",
+  "title": "Out of Memory (OOM) Kills on Auth Service",
+  "description": "Alert triggered for continuous OOM kills on the auth-service pods. The service is flapping and causing 500 errors during user logins across the platform.",
+  "severity": "SEV-1",
+  "affected_services": ["auth-service"],
+  "environment": "production",
+  "timestamp": "2026-06-22T06:15:00Z"
+}

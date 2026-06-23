@@ -1,0 +1,6 @@
+2026-06-22T06:14:40Z INFO [auth-service] User login successful.
+2026-06-22T06:14:45Z WARN [auth-service] High memory usage detected: 1900MB / 2048MB.
+2026-06-22T06:14:50Z ERROR [auth-service] Exception: OutOfMemoryError in session object allocation.
+2026-06-22T06:14:55Z FATAL [auth-service] Process terminated. OOMKilled by container runtime.
+2026-06-22T06:15:02Z INFO [auth-service] Restarting...
+2026-06-22T06:15:10Z WARN [auth-service] High memory usage detected: 1950MB / 2048MB.

@@ -1,0 +1,9 @@
+{
+  "service": "auth-service",
+  "cpu_usage_percent": 15.2,
+  "memory_usage_mb": 2040,
+  "p99_latency_ms": 150,
+  "db_connections_active": 20,
+  "db_connections_max": 100,
+  "replicas": 2
+}

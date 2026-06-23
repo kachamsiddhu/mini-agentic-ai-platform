@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+langgraph
+langchain
+langchain-google-genai
+faiss-cpu
+rank_bm25
+networkx
+pydantic
+pytest
+PyYAML
+httpx
+python-dotenv
