@@ -11,3 +11,5 @@ pytest
 PyYAML
 httpx
 python-dotenv
+langchain-community
+unstructured
