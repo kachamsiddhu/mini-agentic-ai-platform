@@ -17,16 +17,19 @@ jobs:
           pip install -r requirements.txt
       - name: Unit + invariant tests
         env:
+          PYTHONPATH: .
           GOOGLE_API_KEY: "dummy_key_for_tests"
           AUTONOMY_TIER: "MEDIUM"
-        run: pytest tests/test_invariants.py -v
+        run: python -m pytest tests/test_invariants.py -v
       - name: Tool contract tests
         env:
+          PYTHONPATH: .
           GOOGLE_API_KEY: "dummy_key_for_tests"
           AUTONOMY_TIER: "MEDIUM"
-        run: pytest tests/test_tool_contracts.py -v
+        run: python -m pytest tests/test_tool_contracts.py -v
       - name: Trajectory eval gate
         env:
+          PYTHONPATH: .
           GOOGLE_API_KEY: "dummy_key_for_tests"
           AUTONOMY_TIER: "MEDIUM"
-        run: pytest tests/test_trajectory.py -v
+        run: python -m pytest tests/test_trajectory.py -v
